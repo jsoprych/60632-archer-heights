@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>60632 Industrial Corridor — Charts</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { 
+    font-family: 'Inter', sans-serif; 
+    background: #0f172a; 
+    padding: 40px;
+    color: #e2e8f0;
+  }
+  .dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .header {
+    grid-column: 1 / -1;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+  .header p {
+    color: #94a3b8;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .card {
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .card.full { grid-column: 1 / -1; }
+  .card canvas { width: 100% !important; max-height: 300px; }
+  
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .stat {
+    text-align: center;
+    padding: 16px;
+    background: #0f172a;
+    border-radius: 12px;
+  }
+  .stat .num { font-size: 32px; font-weight: 700; color: #38bdf8; }
+  .stat .label { font-size: 12px; color: #64748b; margin-top: 4px; }
+
+  .llm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .llm-table th {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid #334155;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .llm-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #1e293b;
+  }
+  .llm-table tr:hover td { background: #0f172a; }
+  .flag { font-size: 16px; }
+  .bar-cell { min-width: 120px; }
+  .bar-bg { background: #1e293b; height: 8px; border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; }
+  .bar-us { background: #38bdf8; }
+  .bar-cn { background: #f472b6; }
+  .tag-best { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .tag-best.green { background: #166534; color: #86efac; }
+  .tag-best.yellow { background: #854d0e; color: #fde68a; }
+  
+  /* Development pipeline */
+  .pipeline-item { margin-bottom: 16px; }
+  .pipeline-item .meta { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+  .pipeline-item .name { font-weight: 600; }
+  .pipeline-item .size { color: #94a3b8; }
+  .pipeline-bar { height: 10px; border-radius: 5px; background: #0f172a; overflow: hidden; }
+  .pipeline-fill { height: 100%; border-radius: 5px; }
+  .pipeline .status { font-size: 11px; color: #64748b; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="dashboard">
+
+  <div class="header">
+    <h1>60632 Archer Heights — Industrial Corridor</h1>
+    <p>April 30, 2026 · 837 businesses catalogued · Hermes Agent Intelligence</p>
+  </div>
+
+  <div class="card full">
+    <div class="stat-grid">
+      <div class="stat"><div class="num">837</div><div class="label">Total Businesses</div></div>
+      <div class="stat"><div class="num">19</div><div class="label">Industrial / Mfg</div></div>
+      <div class="stat"><div class="num">$4.5B</div><div class="label">Novolex Revenue</div></div>
+      <div class="stat"><div class="num">237K</div><div class="label">Largest SF Property</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Business Types</h2>
+    <canvas id="bizTypeChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Industrial Breakdown</h2>
+    <canvas id="industrialChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Property Sizes (sq ft)</h2>
+    <canvas id="propertyChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Revenue Estimates ($M)</h2>
+    <canvas id="revenueChart"></canvas>
+  </div>
+
+  <div class="card full">
+    <h2>LLM Price / Performance — US 🇺🇸 vs Chinese 🇨🇳</h2>
+    <table class="llm-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Provider</th>
+          <th>Input $</th>
+          <th>Output $</th>
+          <th>MMLU</th>
+          <th>Value (MMLU per $1 input)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#0f172a">
+          <td><strong>DeepSeek-V3</strong> <span class="flag">🇨🇳</span></td>
+          <td>DeepSeek</td>
+          <td>$0.27</td>
+          <td>$1.10</td>
+          <td><strong>88.5</strong></td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill bar-cn" style="width:100%"></div></div></td>
+        </tr>
+        <tr>
+          <td>DeepSeek-R1 <span class="flag">🇨🇳</span></td>
+          <td>DeepSeek</td>
+          <td>$0.55</td>
+          <td>$2.19</td>
+          <td><strong>90.8</strong></td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill bar-cn" style="width:50%"></div></div></td>
+        </tr>
+        <tr>
+          <td>Gemini 2.0 Flash <span class="flag">🇺🇸</span></td>
+          <td>Google</td>
+          <td>$0.10</td>
+          <td>$0.40</td>
+          <td>87.5</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill bar-us" style="width:85%"></div></div></td>
+        </tr>
+        <tr>
+          <td>GPT-4o-mini <span class="flag">🇺🇸</span></td>
+          <td>OpenAI</td>
+          <td>$0.15</td>
+          <td>$0.60</td>
+          <td>82.0</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill bar-us" style="width:55%"></div></div></td>
+        </tr>
+        <tr>
+          <td>Llama 3.1 70B <span class="flag">🇺🇸</span></td>
+          <td>Meta</td>
+          <td>$0.59</td>
+          <td>$0.79</td>
+          <td>86.0</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill bar-us" style="width:30%"></div></div></td>
+        </tr>
+        <tr>
+          <td>Qwen2.5-72B <span class="flag">🇨🇳</span></td>
+          <td>Alibaba</td>
+          <td>$0.90</td>
+          <td>$0.90</td>
+          <td>85.0</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill bar-cn" style="width:20%"></div></div></td>
+        </tr>
+        <tr>
+          <td>GPT-4o <span class="flag">🇺🇸</span></td>
+          <td>OpenAI</td>
+          <td>$2.50</td>
+          <td>$10.00</td>
+          <td>88.7</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill bar-us" style="width:7%"></div></div></td>
+        </tr>
+        <tr>
+          <td>Claude 3.5 Sonnet <span class="flag">🇺🇸</span></td>
+          <td>Anthropic</td>
+          <td>$3.00</td>
+          <td>$15.00</td>
+          <td>88.7</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill bar-us" style="width:5%"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+      <span class="tag-best green">★ BEST VALUE: DeepSeek-V3 — 88.5 MMLU @ $0.27 — 9x cheaper than GPT-4o</span>
+      <span class="tag-best yellow">★ BEST VALUE US: Gemini 2.0 Flash — 87.5 MMLU @ $0.10 — 25x cheaper than GPT-4o</span>
+    </div>
+  </div>
+
+  <div class="card full">
+    <h2>Development Pipeline</h2>
+    <div class="pipeline">
+      <div class="pipeline-item">
+        <div class="meta"><span class="name">Sterling Bay Warehouse</span><span class="size">147,500 SF</span></div>
+        <div class="pipeline-bar"><div class="pipeline-fill" style="width:75%; background:#22c55e;"></div></div>
+        <div class="status">Under construction · $25M project · Class 6b tax incentive approved</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="meta"><span class="name">Greater Chicago Food Depository</span><span class="size">Expansion</span></div>
+        <div class="pipeline-bar"><div class="pipeline-fill" style="width:60%; background:#22c55e;"></div></div>
+        <div class="status">Underway · Skender construction</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="meta"><span class="name">Moving Archer Forward</span><span class="size">Corridor Study</span></div>
+        <div class="pipeline-bar"><div class="pipeline-fill" style="width:40%; background:#eab308;"></div></div>
+        <div class="status">Active · DPD · Public meetings Sep 2025 + Mar 2026</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="meta"><span class="name">Bridge Industrial / Ford City Mall</span><span class="size">913,000 SF</span></div>
+        <div class="pipeline-bar"><div class="pipeline-fill" style="width:15%; background:#64748b;"></div></div>
+        <div class="status">Proposed · Vying for redevelopment</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const blue = '#38bdf8';
+const pink = '#f472b6';
+const purple = '#a78bfa';
+const green = '#34d399';
+const orange = '#fb923c';
+
+new Chart(document.getElementById('bizTypeChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Retail','School','Fast Food','Church','Restaurant','Bicycle','Commercial','Mobile Phone','Bar','Bakery'],
+    datasets: [{
+      data: [117,39,30,24,21,23,17,15,9,13],
+      backgroundColor: [blue, pink, purple, green, orange, blue, pink, purple, green, orange],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } },
+      y: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 11 } } }
+    }
+  }
+});
+
+new Chart(document.getElementById('industrialChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Manufacturing','Industrial','Fast Food','Warehouse','Packaging Mfg','Industrial Supply','Food Mfg'],
+    datasets: [{
+      data: [7,4,1,1,1,1,1],
+      backgroundColor: [pink, blue, orange, purple, green, pink, blue],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } },
+      y: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 11 } } }
+    }
+  }
+});
+
+new Chart(document.getElementById('propertyChart'), {
+  type: 'bar',
+  data: {
+    labels: ['4800 S Kilbourn','Sterling Bay','4500 S Tripp','4202 W 45th','4525 S Tripp','4601 S Tripp'],
+    datasets: [{
+      label: 'sq ft',
+      data: [237694, 147500, 92859, 71004, 17500, 12983],
+      backgroundColor: [blue, pink, purple, green, orange, blue],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { size: 10 }, maxRotation: 0 } },
+      y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', callback: v => (v/1000)+'K' } }
+    }
+  }
+});
+
+new Chart(document.getElementById('revenueChart'), {
+  type: 'bar',
+  data: {
+    labels: ['CAM','CMF','CMRP','COI','Archer Mfg'],
+    datasets: [{
+      label: 'Est. Revenue $M',
+      data: [42.1, 20.4, 15.5, 9.0, 3.1],
+      backgroundColor: [pink, blue, purple, green, orange],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { size: 11 } } },
+      y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', callback: v => '$'+v+'M' } }
+    }
+  }
+});
+</script>
+</body>
+</html>
