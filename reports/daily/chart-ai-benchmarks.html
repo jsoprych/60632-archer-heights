@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept Diagram</title>
+<style>
+  :root {
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #88877f;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f6f5f0;
+    --bg-tertiary: #eeedeb;
+    --border: rgba(0,0,0,0.15);
+    --border-hover: rgba(0,0,0,0.3);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-primary: #e8e6de;
+      --text-secondary: #b4b2a9;
+      --text-tertiary: #888780;
+      --bg-primary: #1a1a18;
+      --bg-secondary: #2c2c2a;
+      --bg-tertiary: #3d3d3a;
+      --border: rgba(255,255,255,0.15);
+      --border-hover: rgba(255,255,255,0.3);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg-tertiary);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .card {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 780px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 24px;
+  }
+  svg { width: 100%; height: auto; }
+
+  /* === SVG Design System Classes === */
+
+  /* Text classes */
+  .t  { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: var(--text-primary); }
+  .ts { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: var(--text-secondary); }
+  .th { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: var(--text-primary); font-weight: 500; }
+
+  /* Neutral box */
+  .box { fill: var(--bg-secondary); stroke: var(--border); stroke-width: 0.5px; }
+
+  /* Arrow */
+  .arr { stroke: var(--text-secondary); stroke-width: 1.5px; fill: none; }
+
+  /* Leader line */
+  .leader { stroke: var(--text-tertiary); stroke-width: 0.5px; stroke-dasharray: 4 3; fill: none; }
+
+  /* Clickable node */
+  .node { cursor: pointer; transition: opacity 0.15s; }
+  .node:hover { opacity: 0.82; }
+
+  /* === Color Ramp Classes (light mode) === */
+  .c-purple > rect, .c-purple > circle, .c-purple > ellipse { fill: #EEEDFE; stroke: #534AB7; }
+  .c-purple > .th, .c-purple > text.th { fill: #3C3489; }
+  .c-purple > .ts, .c-purple > text.ts { fill: #534AB7; }
+  .c-purple > .t,  .c-purple > text.t  { fill: #3C3489; }
+
+  .c-teal > rect, .c-teal > circle, .c-teal > ellipse { fill: #E1F5EE; stroke: #0F6E56; }
+  .c-teal > .th, .c-teal > text.th { fill: #085041; }
+  .c-teal > .ts, .c-teal > text.ts { fill: #0F6E56; }
+  .c-teal > .t,  .c-teal > text.t  { fill: #085041; }
+
+  .c-coral > rect, .c-coral > circle, .c-coral > ellipse { fill: #FAECE7; stroke: #993C1D; }
+  .c-coral > .th, .c-coral > text.th { fill: #712B13; }
+  .c-coral > .ts, .c-coral > text.ts { fill: #993C1D; }
+  .c-coral > .t,  .c-coral > text.t  { fill: #712B13; }
+
+  .c-pink > rect, .c-pink > circle, .c-pink > ellipse { fill: #FBEAF0; stroke: #993556; }
+  .c-pink > .th, .c-pink > text.th { fill: #72243E; }
+  .c-pink > .ts, .c-pink > text.ts { fill: #993556; }
+  .c-pink > .t,  .c-pink > text.t  { fill: #72243E; }
+
+  .c-gray > rect, .c-gray > circle, .c-gray > ellipse { fill: #F1EFE8; stroke: #5F5E5A; }
+  .c-gray > .th, .c-gray > text.th { fill: #444441; }
+  .c-gray > .ts, .c-gray > text.ts { fill: #5F5E5A; }
+  .c-gray > .t,  .c-gray > text.t  { fill: #444441; }
+
+  .c-blue > rect, .c-blue > circle, .c-blue > ellipse { fill: #E6F1FB; stroke: #185FA5; }
+  .c-blue > .th, .c-blue > text.th { fill: #0C447C; }
+  .c-blue > .ts, .c-blue > text.ts { fill: #185FA5; }
+  .c-blue > .t,  .c-blue > text.t  { fill: #0C447C; }
+
+  .c-green > rect, .c-green > circle, .c-green > ellipse { fill: #EAF3DE; stroke: #3B6D11; }
+  .c-green > .th, .c-green > text.th { fill: #27500A; }
+  .c-green > .ts, .c-green > text.ts { fill: #3B6D11; }
+  .c-green > .t,  .c-green > text.t  { fill: #27500A; }
+
+  .c-amber > rect, .c-amber > circle, .c-amber > ellipse { fill: #FAEEDA; stroke: #854F0B; }
+  .c-amber > .th, .c-amber > text.th { fill: #633806; }
+  .c-amber > .ts, .c-amber > text.ts { fill: #854F0B; }
+  .c-amber > .t,  .c-amber > text.t  { fill: #633806; }
+
+  .c-red > rect, .c-red > circle, .c-red > ellipse { fill: #FCEBEB; stroke: #A32D2D; }
+  .c-red > .th, .c-red > text.th { fill: #791F1F; }
+  .c-red > .ts, .c-red > text.ts { fill: #A32D2D; }
+  .c-red > .t,  .c-red > text.t  { fill: #791F1F; }
+
+  /* === Dark mode overrides === */
+  @media (prefers-color-scheme: dark) {
+    .c-purple > rect, .c-purple > circle, .c-purple > ellipse { fill: #3C3489; stroke: #AFA9EC; }
+    .c-purple > .th, .c-purple > text.th { fill: #CECBF6; }
+    .c-purple > .ts, .c-purple > text.ts { fill: #AFA9EC; }
+
+    .c-teal > rect, .c-teal > circle, .c-teal > ellipse { fill: #085041; stroke: #5DCAA5; }
+    .c-teal > .th, .c-teal > text.th { fill: #9FE1CB; }
+    .c-teal > .ts, .c-teal > text.ts { fill: #5DCAA5; }
+
+    .c-coral > rect, .c-coral > circle, .c-coral > ellipse { fill: #712B13; stroke: #F0997B; }
+    .c-coral > .th, .c-coral > text.th { fill: #F5C4B3; }
+    .c-coral > .ts, .c-coral > text.ts { fill: #F0997B; }
+
+    .c-pink > rect, .c-pink > circle, .c-pink > ellipse { fill: #72243E; stroke: #ED93B1; }
+    .c-pink > .th, .c-pink > text.th { fill: #F4C0D1; }
+    .c-pink > .ts, .c-pink > text.ts { fill: #ED93B1; }
+
+    .c-gray > rect, .c-gray > circle, .c-gray > ellipse { fill: #444441; stroke: #B4B2A9; }
+    .c-gray > .th, .c-gray > text.th { fill: #D3D1C7; }
+    .c-gray > .ts, .c-gray > text.ts { fill: #B4B2A9; }
+
+    .c-blue > rect, .c-blue > circle, .c-blue > ellipse { fill: #0C447C; stroke: #85B7EB; }
+    .c-blue > .th, .c-blue > text.th { fill: #B5D4F4; }
+    .c-blue > .ts, .c-blue > text.ts { fill: #85B7EB; }
+
+    .c-green > rect, .c-green > circle, .c-green > ellipse { fill: #27500A; stroke: #97C459; }
+    .c-green > .th, .c-green > text.th { fill: #C0DD97; }
+    .c-green > .ts, .c-green > text.ts { fill: #97C459; }
+
+    .c-amber > rect, .c-amber > circle, .c-amber > ellipse { fill: #633806; stroke: #EF9F27; }
+    .c-amber > .th, .c-amber > text.th { fill: #FAC775; }
+    .c-amber > .ts, .c-amber > text.ts { fill: #EF9F27; }
+
+    .c-red > rect, .c-red > circle, .c-red > ellipse { fill: #791F1F; stroke: #F09595; }
+    .c-red > .th, .c-red > text.th { fill: #F7C1C1; }
+    .c-red > .ts, .c-red > text.ts { fill: #F09595; }
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>AI Model Benchmark Rankings — April 2026</h1>
+  <p class="subtitle">27 models across 5 benchmarks + pricing. Sources: lmarena.ai, vals.ai, artificialanalysis.ai, pricepertoken.com, gaia-benchmark</p>
+  <svg width="100%" viewBox="0 0 680 4376" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Legend row -->
+  <text class="ts" x="150" y="20" dominant-baseline="central">Model</text>
+  <text class="ts" x="164" y="20" dominant-baseline="central">Arena Elo</text>
+  <text class="ts" x="482" y="20" dominant-baseline="central">Max 1550</text>
+  <text class="ts" x="534" y="20" dominant-baseline="central">SWE-Ver%</text>
+  <text class="ts" x="560" y="20" dominant-baseline="central">Max 94</text>
+  <text class="ts" x="612" y="20" dominant-baseline="central">GPQA%</text>
+  <text class="ts" x="639" y="20" dominant-baseline="central">Max 95</text>
+  <text class="ts" x="691" y="20" dominant-baseline="central">MMLU-Pro%</text>
+  <text class="ts" x="717" y="20" dominant-baseline="central">Max 90</text>
+  <text class="ts" x="769" y="20" dominant-baseline="central">GAIA%</text>
+  <text class="ts" x="787" y="20" dominant-baseline="central">Max 53</text>
+  <text class="ts" x="620" y="20" dominant-baseline="central">Price/M</text>
+  <text class="th" x="140" y="63.0" text-anchor="end" dominant-baseline="central">🇺🇸 Claude Opus 4.7</text>
+  <text class="ts" x="140" y="84" text-anchor="end" dominant-baseline="central">Anthropic</text>
+  <text class="ts" x="140" y="96" text-anchor="end" dominant-baseline="central">Apr 2026</text>
+  <rect class="c-blue" x="160" y="52" width="300" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="463" y="62.0" dominant-baseline="central" font-size="10">1504</text>
+  <rect class="c-teal" x="530" y="52" width="16" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="549" y="62.0" dominant-baseline="central" font-size="10">87.6</text>
+  <rect class="c-coral" x="608" y="52" width="18" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="629" y="62.0" dominant-baseline="central" font-size="10">91.3</text>
+  <text class="ts" x="690" y="62.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="62.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="63.0" dominant-baseline="central">$15.00</text>
+  <text class="th" x="140" y="221.0" text-anchor="end" dominant-baseline="central">🇺🇸 Claude Opus 4.6</text>
+  <text class="ts" x="140" y="242" text-anchor="end" dominant-baseline="central">Anthropic</text>
+  <text class="ts" x="140" y="254" text-anchor="end" dominant-baseline="central">Feb 2026</text>
+  <rect class="c-blue" x="160" y="210" width="299" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="462" y="220.0" dominant-baseline="central" font-size="10">1495</text>
+  <rect class="c-teal" x="530" y="210" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="548" y="220.0" dominant-baseline="central" font-size="10">80.8</text>
+  <rect class="c-coral" x="608" y="210" width="17" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="628" y="220.0" dominant-baseline="central" font-size="10">88.5</text>
+  <rect class="c-purple" x="687" y="210" width="17" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="707" y="220.0" dominant-baseline="central" font-size="10">88.0</text>
+  <text class="ts" x="768" y="220.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="221.0" dominant-baseline="central">$15.00</text>
+  <text class="th" x="140" y="379.0" text-anchor="end" dominant-baseline="central">🇺🇸 Claude 3.5 Sonnet</text>
+  <text class="ts" x="140" y="400" text-anchor="end" dominant-baseline="central">Anthropic</text>
+  <text class="ts" x="140" y="412" text-anchor="end" dominant-baseline="central">Jun 2024</text>
+  <rect class="c-blue" x="160" y="368" width="270" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="433" y="378.0" dominant-baseline="central" font-size="10">1350</text>
+  <rect class="c-teal" x="530" y="368" width="9" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="542" y="378.0" dominant-baseline="central" font-size="10">49.0</text>
+  <rect class="c-coral" x="608" y="368" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="626" y="378.0" dominant-baseline="central" font-size="10">78.0</text>
+  <rect class="c-purple" x="687" y="368" width="16" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="706" y="378.0" dominant-baseline="central" font-size="10">82.0</text>
+  <rect class="c-pink" x="765" y="368" width="8" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="776" y="378.0" dominant-baseline="central" font-size="10">43.9</text>
+  <text class="ts" x="625" y="379.0" dominant-baseline="central">$3.00</text>
+  <text class="th" x="140" y="537.0" text-anchor="end" dominant-baseline="central">🇺🇸 GPT-5.5</text>
+  <text class="ts" x="140" y="558" text-anchor="end" dominant-baseline="central">OpenAI</text>
+  <text class="ts" x="140" y="570" text-anchor="end" dominant-baseline="central">Apr 2026</text>
+  <rect class="c-blue" x="160" y="526" width="297" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="460" y="536.0" dominant-baseline="central" font-size="10">1488</text>
+  <rect class="c-teal" x="530" y="526" width="16" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="549" y="536.0" dominant-baseline="central" font-size="10">88.7</text>
+  <rect class="c-coral" x="608" y="526" width="18" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="629" y="536.0" dominant-baseline="central" font-size="10">92.5</text>
+  <text class="ts" x="690" y="536.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="536.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="537.0" dominant-baseline="central">$2.50</text>
+  <text class="th" x="140" y="695.0" text-anchor="end" dominant-baseline="central">🇺🇸 GPT-5.4</text>
+  <text class="ts" x="140" y="716" text-anchor="end" dominant-baseline="central">OpenAI</text>
+  <text class="ts" x="140" y="728" text-anchor="end" dominant-baseline="central">Mar 2026</text>
+  <rect class="c-blue" x="160" y="684" width="296" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="459" y="694.0" dominant-baseline="central" font-size="10">1484</text>
+  <rect class="c-teal" x="530" y="684" width="14" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="547" y="694.0" dominant-baseline="central" font-size="10">78.2</text>
+  <rect class="c-coral" x="608" y="684" width="18" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="629" y="694.0" dominant-baseline="central" font-size="10">92.0</text>
+  <rect class="c-purple" x="687" y="684" width="17" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="707" y="694.0" dominant-baseline="central" font-size="10">87.0</text>
+  <rect class="c-pink" x="765" y="684" width="9" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="777" y="694.0" dominant-baseline="central" font-size="10">48.2</text>
+  <text class="ts" x="625" y="695.0" dominant-baseline="central">$2.50</text>
+  <text class="th" x="140" y="853.0" text-anchor="end" dominant-baseline="central">🇺🇸 GPT-4o</text>
+  <text class="ts" x="140" y="874" text-anchor="end" dominant-baseline="central">OpenAI</text>
+  <text class="ts" x="140" y="886" text-anchor="end" dominant-baseline="central">May 2024</text>
+  <rect class="c-blue" x="160" y="842" width="271" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="434" y="852.0" dominant-baseline="central" font-size="10">1359</text>
+  <rect class="c-teal" x="530" y="842" width="8" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="541" y="852.0" dominant-baseline="central" font-size="10">44.0</text>
+  <rect class="c-coral" x="608" y="842" width="14" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="625" y="852.0" dominant-baseline="central" font-size="10">73.0</text>
+  <rect class="c-purple" x="687" y="842" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="705" y="852.0" dominant-baseline="central" font-size="10">78.0</text>
+  <rect class="c-pink" x="765" y="842" width="7" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="775" y="852.0" dominant-baseline="central" font-size="10">38.7</text>
+  <text class="ts" x="625" y="853.0" dominant-baseline="central">$2.50</text>
+  <text class="th" x="140" y="1011.0" text-anchor="end" dominant-baseline="central">🇺🇸 GPT-4o-mini</text>
+  <text class="ts" x="140" y="1032" text-anchor="end" dominant-baseline="central">OpenAI</text>
+  <text class="ts" x="140" y="1044" text-anchor="end" dominant-baseline="central">Jul 2024</text>
+  <rect class="c-blue" x="160" y="1000" width="256" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="419" y="1010.0" dominant-baseline="central" font-size="10">1280</text>
+  <text class="ts" x="533" y="1010.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="1010.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-purple" x="687" y="1000" width="14" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="704" y="1010.0" dominant-baseline="central" font-size="10">72.0</text>
+  <text class="ts" x="768" y="1010.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="1011.0" dominant-baseline="central">$0.15</text>
+  <text class="th" x="140" y="1169.0" text-anchor="end" dominant-baseline="central">🇺🇸 Gemini 2.5 Pro</text>
+  <text class="ts" x="140" y="1190" text-anchor="end" dominant-baseline="central">Google</text>
+  <text class="ts" x="140" y="1202" text-anchor="end" dominant-baseline="central">Mar 2026</text>
+  <rect class="c-blue" x="160" y="1158" width="298" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="461" y="1168.0" dominant-baseline="central" font-size="10">1493</text>
+  <rect class="c-teal" x="530" y="1158" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="548" y="1168.0" dominant-baseline="central" font-size="10">80.6</text>
+  <rect class="c-coral" x="608" y="1158" width="18" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="629" y="1168.0" dominant-baseline="central" font-size="10">94.1</text>
+  <rect class="c-purple" x="687" y="1158" width="17" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="707" y="1168.0" dominant-baseline="central" font-size="10">89.8</text>
+  <text class="ts" x="768" y="1168.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="1169.0" dominant-baseline="central">$2.00</text>
+  <text class="th" x="140" y="1327.0" text-anchor="end" dominant-baseline="central">🇺🇸 Gemini 2.0 Flash</text>
+  <text class="ts" x="140" y="1348" text-anchor="end" dominant-baseline="central">Google</text>
+  <text class="ts" x="140" y="1360" text-anchor="end" dominant-baseline="central">Dec 2024</text>
+  <rect class="c-blue" x="160" y="1316" width="268" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="431" y="1326.0" dominant-baseline="central" font-size="10">1340</text>
+  <text class="ts" x="533" y="1326.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="1326.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="690" y="1326.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="1326.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="1327.0" dominant-baseline="central">$0.10</text>
+  <text class="th" x="140" y="1485.0" text-anchor="end" dominant-baseline="central">🇺🇸 Grok 4</text>
+  <text class="ts" x="140" y="1506" text-anchor="end" dominant-baseline="central">xAI</text>
+  <text class="ts" x="140" y="1518" text-anchor="end" dominant-baseline="central">Feb 2026</text>
+  <rect class="c-blue" x="160" y="1474" width="290" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="453" y="1484.0" dominant-baseline="central" font-size="10">1450</text>
+  <rect class="c-teal" x="530" y="1474" width="13" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="546" y="1484.0" dominant-baseline="central" font-size="10">72.0</text>
+  <rect class="c-coral" x="608" y="1474" width="17" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="628" y="1484.0" dominant-baseline="central" font-size="10">85.0</text>
+  <text class="ts" x="690" y="1484.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="1484.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="1485.0" dominant-baseline="central">$2.00</text>
+  <text class="th" x="140" y="1643.0" text-anchor="end" dominant-baseline="central">🇺🇸 Grok 2</text>
+  <text class="ts" x="140" y="1664" text-anchor="end" dominant-baseline="central">xAI</text>
+  <text class="ts" x="140" y="1676" text-anchor="end" dominant-baseline="central">Aug 2024</text>
+  <rect class="c-blue" x="160" y="1632" width="249" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="412" y="1642.0" dominant-baseline="central" font-size="10">1250</text>
+  <text class="ts" x="533" y="1642.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="1642.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="690" y="1642.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="1642.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="1643.0" dominant-baseline="central">$2.00</text>
+  <text class="th" x="140" y="1801.0" text-anchor="end" dominant-baseline="central">🇺🇸 Llama 3.1 405B</text>
+  <text class="ts" x="140" y="1822" text-anchor="end" dominant-baseline="central">Meta</text>
+  <text class="ts" x="140" y="1834" text-anchor="end" dominant-baseline="central">Jul 2024</text>
+  <rect class="c-blue" x="160" y="1790" width="255" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="418" y="1800.0" dominant-baseline="central" font-size="10">1275</text>
+  <text class="ts" x="533" y="1800.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="1800.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-purple" x="687" y="1790" width="16" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="706" y="1800.0" dominant-baseline="central" font-size="10">80.0</text>
+  <text class="ts" x="768" y="1800.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="1801.0" dominant-baseline="central">$2.50</text>
+  <text class="th" x="140" y="1959.0" text-anchor="end" dominant-baseline="central">🇺🇸 Llama 4</text>
+  <text class="ts" x="140" y="1980" text-anchor="end" dominant-baseline="central">Meta</text>
+  <text class="ts" x="140" y="1992" text-anchor="end" dominant-baseline="central">Mar 2026</text>
+  <rect class="c-blue" x="160" y="1948" width="268" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="431" y="1958.0" dominant-baseline="central" font-size="10">1340</text>
+  <text class="ts" x="533" y="1958.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="1958.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="690" y="1958.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="1958.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="1959.0" dominant-baseline="central">N/A</text>
+  <text class="th" x="140" y="2117.0" text-anchor="end" dominant-baseline="central">🇨🇳 DeepSeek-V4 Flash</text>
+  <text class="ts" x="140" y="2138" text-anchor="end" dominant-baseline="central">DeepSeek</text>
+  <text class="ts" x="140" y="2150" text-anchor="end" dominant-baseline="central">Apr 2026</text>
+  <text class="ts" x="163" y="2116.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-teal" x="530" y="2106" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="548" y="2116.0" dominant-baseline="central" font-size="10">79.0</text>
+  <text class="ts" x="611" y="2116.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="690" y="2116.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="2116.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="2117.0" dominant-baseline="central">$0.28</text>
+  <text class="th" x="140" y="2275.0" text-anchor="end" dominant-baseline="central">🇨🇳 DeepSeek-V3.2</text>
+  <text class="ts" x="140" y="2296" text-anchor="end" dominant-baseline="central">DeepSeek</text>
+  <text class="ts" x="140" y="2308" text-anchor="end" dominant-baseline="central">Feb 2026</text>
+  <rect class="c-blue" x="160" y="2264" width="268" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="431" y="2274.0" dominant-baseline="central" font-size="10">1340</text>
+  <rect class="c-teal" x="530" y="2264" width="13" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="546" y="2274.0" dominant-baseline="central" font-size="10">73.0</text>
+  <rect class="c-coral" x="608" y="2264" width="16" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="627" y="2274.0" dominant-baseline="central" font-size="10">80.0</text>
+  <text class="ts" x="690" y="2274.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="2274.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="2275.0" dominant-baseline="central">$0.29</text>
+  <text class="th" x="140" y="2433.0" text-anchor="end" dominant-baseline="central">🇨🇳 DeepSeek-V3</text>
+  <text class="ts" x="140" y="2454" text-anchor="end" dominant-baseline="central">DeepSeek</text>
+  <text class="ts" x="140" y="2466" text-anchor="end" dominant-baseline="central">Dec 2024</text>
+  <rect class="c-blue" x="160" y="2422" width="258" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="421" y="2432.0" dominant-baseline="central" font-size="10">1290</text>
+  <rect class="c-teal" x="530" y="2422" width="9" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="542" y="2432.0" dominant-baseline="central" font-size="10">48.0</text>
+  <rect class="c-coral" x="608" y="2422" width="14" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="625" y="2432.0" dominant-baseline="central" font-size="10">73.0</text>
+  <rect class="c-purple" x="687" y="2422" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="705" y="2432.0" dominant-baseline="central" font-size="10">78.5</text>
+  <text class="ts" x="768" y="2432.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="2433.0" dominant-baseline="central">$0.27</text>
+  <text class="th" x="140" y="2591.0" text-anchor="end" dominant-baseline="central">🇨🇳 DeepSeek-R1</text>
+  <text class="ts" x="140" y="2612" text-anchor="end" dominant-baseline="central">DeepSeek</text>
+  <text class="ts" x="140" y="2624" text-anchor="end" dominant-baseline="central">Jan 2025</text>
+  <rect class="c-blue" x="160" y="2580" width="266" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="429" y="2590.0" dominant-baseline="central" font-size="10">1330</text>
+  <text class="ts" x="533" y="2590.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-coral" x="608" y="2580" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="626" y="2590.0" dominant-baseline="central" font-size="10">77.0</text>
+  <rect class="c-purple" x="687" y="2580" width="16" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="706" y="2590.0" dominant-baseline="central" font-size="10">84.0</text>
+  <text class="ts" x="768" y="2590.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="2591.0" dominant-baseline="central">$0.55</text>
+  <text class="th" x="140" y="2749.0" text-anchor="end" dominant-baseline="central">🇨🇳 GLM-5</text>
+  <text class="ts" x="140" y="2770" text-anchor="end" dominant-baseline="central">Z.ai (Zhipu)</text>
+  <text class="ts" x="140" y="2782" text-anchor="end" dominant-baseline="central">Feb 2026</text>
+  <rect class="c-blue" x="160" y="2738" width="290" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="453" y="2748.0" dominant-baseline="central" font-size="10">1451</text>
+  <rect class="c-teal" x="530" y="2738" width="14" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="547" y="2748.0" dominant-baseline="central" font-size="10">77.8</text>
+  <rect class="c-coral" x="608" y="2738" width="17" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="628" y="2748.0" dominant-baseline="central" font-size="10">86.0</text>
+  <rect class="c-purple" x="687" y="2738" width="18" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="708" y="2748.0" dominant-baseline="central" font-size="10">91.7</text>
+  <text class="ts" x="768" y="2748.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="2749.0" dominant-baseline="central">$0.50</text>
+  <text class="th" x="140" y="2907.0" text-anchor="end" dominant-baseline="central">🇨🇳 Qwen2.5-72B</text>
+  <text class="ts" x="140" y="2928" text-anchor="end" dominant-baseline="central">Alibaba</text>
+  <text class="ts" x="140" y="2940" text-anchor="end" dominant-baseline="central">Sep 2024</text>
+  <rect class="c-blue" x="160" y="2896" width="249" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="412" y="2906.0" dominant-baseline="central" font-size="10">1250</text>
+  <text class="ts" x="533" y="2906.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-coral" x="608" y="2896" width="14" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="625" y="2906.0" dominant-baseline="central" font-size="10">73.0</text>
+  <rect class="c-purple" x="687" y="2896" width="17" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="707" y="2906.0" dominant-baseline="central" font-size="10">85.0</text>
+  <text class="ts" x="768" y="2906.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="2907.0" dominant-baseline="central">$0.90</text>
+  <text class="th" x="140" y="3065.0" text-anchor="end" dominant-baseline="central">🇨🇳 Qwen3.6 Plus</text>
+  <text class="ts" x="140" y="3086" text-anchor="end" dominant-baseline="central">Alibaba</text>
+  <text class="ts" x="140" y="3098" text-anchor="end" dominant-baseline="central">Apr 2026</text>
+  <rect class="c-blue" x="160" y="3054" width="272" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="435" y="3064.0" dominant-baseline="central" font-size="10">1360</text>
+  <rect class="c-teal" x="530" y="3054" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="548" y="3064.0" dominant-baseline="central" font-size="10">78.8</text>
+  <text class="ts" x="611" y="3064.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="690" y="3064.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="3064.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="3065.0" dominant-baseline="central">N/A</text>
+  <text class="th" x="140" y="3223.0" text-anchor="end" dominant-baseline="central">🇨🇳 Kimi K2.6</text>
+  <text class="ts" x="140" y="3244" text-anchor="end" dominant-baseline="central">Moonshot AI</text>
+  <text class="ts" x="140" y="3256" text-anchor="end" dominant-baseline="central">Apr 2026</text>
+  <rect class="c-blue" x="160" y="3212" width="278" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="441" y="3222.0" dominant-baseline="central" font-size="10">1390</text>
+  <text class="ts" x="533" y="3222.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="3222.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="690" y="3222.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="3222.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="3223.0" dominant-baseline="central">$0.60</text>
+  <text class="th" x="140" y="3381.0" text-anchor="end" dominant-baseline="central">🇨🇳 MiniMax M2.5</text>
+  <text class="ts" x="140" y="3402" text-anchor="end" dominant-baseline="central">MiniMax</text>
+  <text class="ts" x="140" y="3414" text-anchor="end" dominant-baseline="central">Mar 2026</text>
+  <rect class="c-blue" x="160" y="3370" width="276" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="439" y="3380.0" dominant-baseline="central" font-size="10">1380</text>
+  <rect class="c-teal" x="530" y="3370" width="15" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="548" y="3380.0" dominant-baseline="central" font-size="10">80.2</text>
+  <text class="ts" x="611" y="3380.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="690" y="3380.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="3380.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="3381.0" dominant-baseline="central">$1.00</text>
+  <text class="th" x="140" y="3539.0" text-anchor="end" dominant-baseline="central">🇺🇸 Phi-4 (14B)</text>
+  <text class="ts" x="140" y="3560" text-anchor="end" dominant-baseline="central">Microsoft</text>
+  <text class="ts" x="140" y="3572" text-anchor="end" dominant-baseline="central">Dec 2024</text>
+  <rect class="c-blue" x="160" y="3528" width="249" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="412" y="3538.0" dominant-baseline="central" font-size="10">1250</text>
+  <text class="ts" x="533" y="3538.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="3538.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-purple" x="687" y="3528" width="16" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="706" y="3538.0" dominant-baseline="central" font-size="10">84.4</text>
+  <text class="ts" x="768" y="3538.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="3539.0" dominant-baseline="central">$0.10</text>
+  <text class="th" x="140" y="3697.0" text-anchor="end" dominant-baseline="central">🇺🇸 Llama 3.2 8B</text>
+  <text class="ts" x="140" y="3718" text-anchor="end" dominant-baseline="central">Meta</text>
+  <text class="ts" x="140" y="3730" text-anchor="end" dominant-baseline="central">Sep 2024</text>
+  <rect class="c-blue" x="160" y="3686" width="235" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="398" y="3696.0" dominant-baseline="central" font-size="10">1180</text>
+  <text class="ts" x="533" y="3696.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="3696.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-purple" x="687" y="3686" width="13" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="703" y="3696.0" dominant-baseline="central" font-size="10">68.0</text>
+  <text class="ts" x="768" y="3696.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="3697.0" dominant-baseline="central">$0.06</text>
+  <text class="th" x="140" y="3855.0" text-anchor="end" dominant-baseline="central">🇨🇳 Qwen2.5-7B</text>
+  <text class="ts" x="140" y="3876" text-anchor="end" dominant-baseline="central">Alibaba</text>
+  <text class="ts" x="140" y="3888" text-anchor="end" dominant-baseline="central">Sep 2024</text>
+  <rect class="c-blue" x="160" y="3844" width="220" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="383" y="3854.0" dominant-baseline="central" font-size="10">1100</text>
+  <text class="ts" x="533" y="3854.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="3854.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-purple" x="687" y="3844" width="14" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="704" y="3854.0" dominant-baseline="central" font-size="10">73.0</text>
+  <text class="ts" x="768" y="3854.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="3855.0" dominant-baseline="central">$0.05</text>
+  <text class="th" x="140" y="4013.0" text-anchor="end" dominant-baseline="central">🇨🇳 DeepSeek-R1-Distill-32B</text>
+  <text class="ts" x="140" y="4034" text-anchor="end" dominant-baseline="central">DeepSeek</text>
+  <text class="ts" x="140" y="4046" text-anchor="end" dominant-baseline="central">Jan 2025</text>
+  <rect class="c-blue" x="160" y="4002" width="249" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="412" y="4012.0" dominant-baseline="central" font-size="10">1250</text>
+  <text class="ts" x="533" y="4012.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="4012.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="690" y="4012.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="768" y="4012.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="4013.0" dominant-baseline="central">$0.08</text>
+  <text class="th" x="140" y="4171.0" text-anchor="end" dominant-baseline="central">🇫🇷 Mistral 7B</text>
+  <text class="ts" x="140" y="4192" text-anchor="end" dominant-baseline="central">Mistral</text>
+  <text class="ts" x="140" y="4204" text-anchor="end" dominant-baseline="central">Sep 2023</text>
+  <rect class="c-blue" x="160" y="4160" width="216" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="379" y="4170.0" dominant-baseline="central" font-size="10">1080</text>
+  <text class="ts" x="533" y="4170.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="611" y="4170.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <rect class="c-purple" x="687" y="4160" width="12" height="20" rx="3" stroke-width="0.5"/>
+  <text class="ts" x="702" y="4170.0" dominant-baseline="central" font-size="10">64.0</text>
+  <text class="ts" x="768" y="4170.0" dominant-baseline="central" font-size="10" fill="var(--text-tertiary)">—</text>
+  <text class="ts" x="625" y="4171.0" dominant-baseline="central">$0.04</text>
+  <text class="ts" x="60" y="4336" dominant-baseline="central">Sources: lmarena.ai (Arena Elo), vals.ai/swebench.com (SWE-Ver), pricepertoken.com (GPQA, MMLU-Pro), gaia-benchmark (GAIA)</text>
+  <text class="ts" x="60" y="4354" dominant-baseline="central">Updated: April 30, 2026 · — = Not yet evaluated on that benchmark</text>
+</svg>
+</div>
+</body>
+</html>
