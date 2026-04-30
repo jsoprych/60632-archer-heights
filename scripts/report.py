@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
-60632 Archer Heights — Enhanced Report Generator with ASCII Charts
-Includes: biz type charts, property sizes, development pipeline, LLM price/performance
+60632 Archer Heights — Daily Report Generator
+Generates: chart HTMLs (concept-diagrams SVGs) + markdown report + inlines ASCII fallback
 """
 
-import sqlite3
+import sqlite3, os, subprocess
 from datetime import datetime
 
-db = sqlite3.connect("/opt/data/60632_business_inventory.db")
+DB = "/opt/data/60632_business_inventory.db"
+REPO = "/opt/data/60632-archer-heights"
+
+db = sqlite3.connect(DB)
 c = db.cursor()
 
 c.execute("SELECT COUNT(*) FROM businesses")
@@ -19,84 +22,60 @@ notes_count = c.fetchone()[0]
 c.execute("SELECT biz_type, COUNT(*) FROM businesses GROUP BY biz_type ORDER BY COUNT(*) DESC LIMIT 12")
 top_types = c.fetchall()
 
-industrial_types = ('manufacturing','packaging_manufacturing','food_manufacturing',
-                    'industrial','industrial_supply','industrial_property',
-                    'cold_storage_warehouse','import_warehouse','warehouse',
-                    'rail_intermodal','rail_switching','rail_services','recording_studio')
-placeholders = ','.join('?' for _ in industrial_types)
-c.execute(f"SELECT biz_type, COUNT(*) FROM businesses WHERE biz_type IN ({placeholders}) GROUP BY biz_type ORDER BY COUNT(*) DESC", industrial_types)
+ind_types = ('manufacturing','packaging_manufacturing','food_manufacturing',
+             'industrial','industrial_supply','industrial_property',
+             'cold_storage_warehouse','import_warehouse','warehouse',
+             'rail_intermodal','rail_switching','rail_services','recording_studio')
+placeholders = ','.join('?' for _ in ind_types)
+c.execute(f"SELECT biz_type, COUNT(*) FROM businesses WHERE biz_type IN ({placeholders}) GROUP BY biz_type ORDER BY COUNT(*) DESC", ind_types)
 ind_data = c.fetchall()
 
-c.execute(f"SELECT name, address, biz_type, description, website FROM businesses WHERE biz_type IN ({placeholders}) AND description != '' ORDER BY name", industrial_types)
+c.execute(f"SELECT name, address, biz_type, description, website FROM businesses WHERE biz_type IN ({placeholders}) AND description != '' ORDER BY name", ind_types)
 detailed = c.fetchall()
 
 c.execute("SELECT topic, note FROM research_notes")
 notes = c.fetchall()
 db.close()
 
-def ascii_bar(labels, values, title="", width=30, sort=True):
-    if not labels or not values:
-        return ""
-    data = list(zip(labels, values))
-    if sort:
-        data = sorted(data, key=lambda x: x[1], reverse=True)
+# Generate charts
+print("Generating SVG charts...")
+subprocess.run(["python3", os.path.join(REPO, "scripts", "generate-charts.py")], cwd=REPO)
+
+def ascii_bar(labels, values, title="", width=28, sort=True):
+    if not labels or not values: return ""
+    data = sorted(zip(labels, values), key=lambda x: x[1], reverse=True) if sort else list(zip(labels, values))
     max_val = max(v for _, v in data)
     scale = width / max_val if max_val > 0 else 1
     lines = []
-    if title:
-        lines.append(f"  {title}")
-        lines.append("  " + "-" * width)
+    if title: lines.append(f"  {title}"); lines.append("  " + "-" * width)
     for label, val in data:
         bar_len = max(1, int(val * scale))
-        bar = "█" * bar_len
-        lines.append(f"  {label:<28} {bar} {val}")
+        lines.append(f"  {label:<28} {'█' * bar_len} {val}")
     return "\n".join(lines)
 
-def llm_section():
-    """ASCII chart for LLM price/performance."""
-    return """  ┌──────────────────────────────────────────────────────────────────────┐
-  │  LLM PRICE / PERFORMANCE — US vs CHINESE PROVIDERS                 │
-  │  (prices $/1M tokens, MMLU benchmark)                              │
-  └──────────────────────────────────────────────────────────────────────┘
-
-  BEST VALUE (under $1 in)
-    Gemini 1.5 Flash ........ 0.08/0.30  MMLU 82.0  ████████████████░░
-    Gemini 2.0 Flash ........ 0.10/0.40  MMLU 87.5  ████████████████████
-    GPT-4o-mini ............. 0.15/0.60  MMLU 82.0  ████████████████░░
-    DeepSeek-V3 🇨🇳 ......... 0.27/1.10  MMLU 88.5  ████████████████████½
-    DeepSeek-R1 🇨🇳 ......... 0.55/2.19  MMLU 90.8  ████████████████████½
-
-  MID-RANGE ($1-$5 in)
-    Llama 3.1 70B .......... 0.59/0.79  MMLU 86.0  █████████████████░░
-    Qwen2.5-72B 🇨🇳 ........ 0.90/0.90  MMLU 85.0  ████████████████░░░
-    o3-mini ................ 1.10/4.40  MMLU 87.6  █████████████████░░
-    Gemini 1.5 Pro ......... 1.25/5.00  MMLU 85.9  ████████████████░░░
-    GPT-4o ................. 2.50/10.00 MMLU 88.7  ████████████████████
-    Claude 3.5 Sonnet ...... 3.00/15.00 MMLU 88.7  ████████████████████
-
-  PREMIUM ($5+ in)
-    GPT-4 Turbo ............ 10.00/30.00  ——       █████████░░░░░░░░░░
-    GPT-4.5 ................ 75.00/150.00 ——       ███░░░░░░░░░░░░░░░░
-
-  ★ TOP PICK: DeepSeek-V3 — 88.5 MMLU @ $0.27/$1.10 = 9x cheaper than GPT-4o
-  ★ TOP PICK: Gemini 2.0 Flash — 87.5 MMLU @ $0.10/$0.40 = 25x cheaper than GPT-4o
-"""
-
 # ── BUILD REPORT ──
-print(f"""# 60632 Archer Heights — Daily Intelligence Report
+print(f"""
+# 60632 Archer Heights — Daily Intelligence Report
 **Generated:** {datetime.now().strftime('%B %d, %Y at %H:%M UTC')}
 **Database:** {total} businesses | {notes_count} research notes
+**Charts:** View in browser (drag HTML files into any browser)
 
 ---
 ## 📊 AT A GLANCE
 
   Total businesses catalogued:  {total}
   Industrial/manufacturing:     {sum(v for _, v in ind_data)}
+
+[📈 Business Types Chart](reports/daily/chart-business-types.html)
+[🏭 Industrial Breakdown Chart](reports/daily/chart-industrial.html)
+[💰 Revenue Comparison](reports/daily/chart-revenue.html)
+[🏢 Property Sizes](reports/daily/chart-properties.html)
+[🤖 LLM Price/Performance](reports/daily/chart-llm-price-performance.html)
 """)
 
-print(ascii_bar([t for t,_ in top_types], [c_ for _,c_ in top_types], title=f"Business Types (n={total})", width=28))
+print(ascii_bar([t for t,_ in top_types], [c_ for _,c_ in top_types], title=f"Business Types (n={total})"))
 print()
-print(ascii_bar([t for t,_ in ind_data], [c_ for _,c_ in ind_data], title="Industrial & Manufacturing Breakdown", width=30))
+print(ascii_bar([t for t,_ in ind_data], [c_ for _,c_ in ind_data], title="Industrial & Manufacturing Breakdown"))
 print()
 
 print("""
@@ -107,9 +86,7 @@ for name, addr, biz_type, desc, website in detailed:
     print(f"  **{name}**")
     if addr: print(f"  📍 {addr}")
     print(f"  🏷️  {biz_type.replace('_', ' ').title()}")
-    if desc:
-        short = desc if len(desc) < 130 else desc[:127] + "..."
-        print(f"  ℹ️  {short}")
+    if desc: print(f"  ℹ️  {desc[:130]}")
     if website: print(f"  🔗 {website}")
     print()
 
@@ -122,7 +99,7 @@ print("""
   ● Pactiv Evergreen merger closed Apr 2025
 
   **Chicago Metal Fabricators** — $20.4M | Est. 1908 | ISO 9001
-  **Chicago Metal Rolled Products** — $15.5M | Est. 1908
+  **Chicago Metal Rolled Products** — $15.5M | Est. 1908 | World's largest beam bender
   **Chicago American Manufacturing** — $42.1M | GSA contract holder
 """)
 
@@ -131,9 +108,9 @@ print("""
 ## 🏢 COMMERCIAL REAL ESTATE
 """)
 print(ascii_bar(
-    ["4800 S Kilbourn Ave","Sterling Bay Warehouse","4500 S Tripp","4202 W 45th","4525 S Tripp","4601 S Tripp"],
+    ["4800 S Kilbourn Ave","Sterling Bay","4500 S Tripp","4202 W 45th","4525 S Tripp","4601 S Tripp"],
     [237694,147500,92859,71004,17500,12983],
-    title="Property Sizes (sq ft)", width=30
+    title="Property Sizes (sq ft)"
 ))
 print("""
   ● 4800 S Kilbourn: 237,694 SF | 15-ton cranes | 7 intermodal yards
@@ -152,9 +129,23 @@ print("""
 
 print("""
 ---
-## 🤖 LLM PRICE / PERFORMANCE DASHBOARD
+## 🤖 LLM PRICE / PERFORMANCE
 """)
-print(llm_section())
+print("""  ★ TOP PICK: DeepSeek-V3 — 88.5 MMLU @ $0.27/M — 9x cheaper than GPT-4o
+  ★ TOP PICK: Gemini 2.0 Flash — 87.5 MMLU @ $0.10/M — 25x cheaper than GPT-4o
+
+  Model                Input$  Output$  MMLU   Value
+  DeepSeek-V3 🇨🇳       0.27    1.10    88.5   ████████████████████
+  DeepSeek-R1 🇨🇳       0.55    2.19    90.8   ████████████████░░
+  Gemini 2.0 Flash 🇺🇸  0.10    0.40    87.5   ██████████████████░
+  GPT-4o-mini 🇺🇸       0.15    0.60    82.0   █████████████░░░░░
+  Llama 3.1 70B 🇺🇸     0.59    0.79    86.0   ██████████████░░░░
+  Qwen2.5-72B 🇨🇳       0.90    0.90    85.0   █████████████░░░░░
+  GPT-4o 🇺🇸            2.50   10.00    88.7   ██████████████████░
+  Claude 3.5 Sonnet 🇺🇸 3.00   15.00    88.7   ██████████████████░
+
+  [📈 Full LLM Chart](reports/daily/chart-llm-price-performance.html)
+""")
 
 print("""
 ---
@@ -179,4 +170,5 @@ print("""
 
 ---
 *Generated by Hermes Agent — github.com/jsoprych/60632-archer-heights*
+  *Charts: concept-diagrams SVG — open *.html files in any browser*
 """)
