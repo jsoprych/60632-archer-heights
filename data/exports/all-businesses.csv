@@ -1,0 +1,838 @@
+name,address,biz_type
+Central Market,,airport_terminal
+Concourse A,,airport_terminal
+Concourse B,,airport_terminal
+Concourse C,,airport_terminal
+Cicero Senior Lofts,4835 South Cicero Avenue,apartments
+El Zocalo Apartments,3246 West 47th Street,apartments
+Lawn Terrace Apartments,6308-6320 South Kedzie Avenue,apartments
+Senior Suites Of Gage Park,3244-3254 West 59th Street,apartments
+The Claridge at Cicero,4437 South Cicero Avenue,apartments
+BMO,,atm
+Tumi,,bag
+BomBon Cafe,5618 South Pulaski Road,bakery
+Del Real Bakery,3044 West 63rd Street,bakery
+Don Pan Bakery,5154 South Kedzie Avenue,bakery
+La Baguette Bakery,5859 South Kedzie Avenue,bakery
+La Central Bakery,4120 West 47th Street,bakery
+La Chiquita Bakery,3353 West 63rd Street,bakery
+La Fiesta Bakery,6424 South Pulaski Road,bakery
+La France Bakery,5405 South Kedzie Avenue,bakery
+Le Paris Bakery,5434 South Pulaski Road,bakery
+Luna’s Bakery,5901 South Troy Street,bakery
+Monterrey Bakery,4328 South Archer Avenue,bakery
+Torres Bakery,3111 West 63rd Street,bakery
+Winfar Foods,3949 South Keeler Avenue,bakery
+Chase,5137 South Pulaski Road,bank
+Peoples Bank,5400 South Pulaski Road,bank
+Angie’s Bar & Sunset Inn,5221 South Cicero Avenue,bar
+Chicago Sports Bar & Grill,4335 West 47th Street,bar
+Harry Carry’s Shortstop,,bar
+Illinois Bar & Grill On 47th,4135 West 47th Street,bar
+MaddAnthonys Bar & Grill,3350 West 47th Street,bar
+Michael’s Sport Lounge,4501 South Christiana Avenue,bar
+Mr C’s Midway Bar,4654 West 63rd Street,bar
+Sloppy Joes Dive Inn Spirits & Music,4455 West 55th Street,bar
+Watra Night Club,4758 South Pulaski Road,bar
+Audiffred Salon,4318 West 63rd Street,beauty
+European Wax Center,4112 South Pulaski Road,beauty
+Lux Nail Studio,5129 South Pulaski Road,beauty
+Royalty Spa,3022 West 63rd Street,beauty
+e'Nails,,beauty
+Mattress Firm,4116 South Pulaski Road,bed
+Archer Ave & 43rd St,,bicycle_rental
+Francisco Ave & 47th St,,bicycle_rental
+Hamlin Ave & 62nd Pl,,bicycle_rental
+Homan Ave & 65th St,,bicycle_rental
+Kedzie Ave & 45th St,,bicycle_rental
+Kedzie Ave & 48th Pl,,bicycle_rental
+Kedzie Ave & 52nd St,,bicycle_rental
+Kedzie Ave & 57th St,,bicycle_rental
+Kenneth Ave & 50th St,,bicycle_rental
+Kilbourn Ave & 49th St,,bicycle_rental
+Kildare Ave & 47th St,,bicycle_rental
+Kildare Ave & 55th St,,bicycle_rental
+Komensky Ave & 55th St,,bicycle_rental
+Kostner Ave & 63rd St,,bicycle_rental
+Pershing Rd & Sacramento Ave,,bicycle_rental
+Pulaski Rd & 51st St,,bicycle_rental
+Pulaski Rd & 60th St,,bicycle_rental
+Pulaski Rd & Ann Lurie Pl,,bicycle_rental
+Richmond St & 59th St,,bicycle_rental
+Spaulding Ave & 63rd St,,bicycle_rental
+Springfield Ave & 47th St,,bicycle_rental
+St. Louis Ave & 59th St,,bicycle_rental
+St. Louis Ave & Norman Bobbins Pl,,bicycle_rental
+Ink,,books
+Ink by Hudson,,books
+Big Shoulders Coffee,,cafe
+Caffé Vita,,cafe
+Fuel Bar,,cafe
+Los Pekes Ice Cream & Coffee,3742 West 63rd Street,cafe
+Pastel! Cakes and More,4814 South Pulaski Road,cafe
+Razpachos Neveria,5611 South Pulaski Road,cafe
+Maribis of Chicago,4570 South Archer Avenue,cannabis
+AutoZone,4916 South Kedzie Avenue,car_parts
+O'Reilly Auto Parts,4850 South Cicero Avenue,car_parts
+O'Reilly Auto Parts,4740 South Kedzie Avenue,car_parts
+Car-X,5418 South Pulaski Road,car_repair
+Lara Auto Service 2,4817 South Knox Avenue,car_repair
+Nunez Auto Repair Shop,,car_repair
+Ramirez Auto Parts & Repair,,car_repair
+BP,4710 South Archer Avenue,car_wash
+Tesla Supercharger,4433 South Pulaski Road,charging_station
+Brighton Park Early Learning Center,4255 South Archer Avenue,childcare
+Creative Kids Daycare Center,,childcare
+Brighton Park Presbyterian Church,2857 West Pershing Road,church
+Calvary Lutheran Church,6149-6151 South Kenneth Avenue,church
+Chicago Lawn Presbyterian Church,6210 South Saint Louis Avenue,church
+Chicago Lawn United Methodist Church,3500-3506 West 63rd Place,church
+Christian Fellowship Church,4220 West 59th Street,church
+Divine Word Polish National Catholic Church,3846 West 57th Street,church
+Elsdon United Methodist Church,5250-5258 South Christiana Avenue,church
+Five Holy Martyrs Church,4301 South Richmond Street,church
+Good Shepherd Lutheran Church,6150-6158 South Keeler Avenue,church
+Grace United Church of Christ,5954 South Albany Avenue,church
+Midway Church of God,5000 South Kedvale Avenue,church
+Nazareth Evangelical Lutheran Church,5947-5949 South Spaulding Avenue,church
+Peace Lutheran Church,4300 South California Avenue,church
+Saint Bruno's Roman Catholic Church,4801 South Harding Avenue,church
+Saint Elizabeth's Episcopal Church,6201 South Saint Louis Avenue,church
+Saint Gall Catholic Church,5511-5533 South Sawyer Avenue,church
+Saint John's Polish National Catholic Church,4555-4557 South Kedzie Avenue,church
+Saint Mary Star of the Sea Church,6435 South Kilbourn Avenue,church
+Saint Nicolas School,6200 South Lawndale Avenue,church
+Saint Pancratius Roman Catholic Church,4037-4045 South Sacramento Avenue,church
+Saint Richard Catholic Church,5000 South Kostner Avenue,church
+Saint Turibius Roman Catholic Church,4110-4112 West 57th Street,church
+Thomas Memorial Congregational Church,6419 South Homan Avenue,church
+West Lawn Free Methodist Church,6401 South Komensky Avenue,church
+ACCESS Kedzie Family Health Center,3229 West 47th Place,clinic
+Outpatient Recovery Services,,clinic
+UI Health 55th & Pulaski Health Collaborative,5525 South Pulaski Road,clinic
+Chicago Sports,,clothes
+Discovery Clothing Company,5139 South Pulaski Road,clothes
+Zemsky's,4187 South Archer Avenue,clothes
+Cafe El Meson,4631 South Kedzie Avenue,coffee
+Lineage Cold Storage,"4500 W Ann Lurie Pl, Chicago, IL 60632",cold_storage_warehouse
+American Legion Clearing Post 600,4352 West 63rd Street,commercial
+Archer Knox Auto Rebuilders,5285 South Archer Avenue,commercial
+BMO,6400 South Pulaski Road,commercial
+Bank of America,5601 South Kedzie Avenue,commercial
+Brighton Park Community Bank,4334 South Kedzie Avenue,commercial
+Carfect,4530 South Archer Avenue,commercial
+Cicero Motel,4501 South Cicero Avenue,commercial
+Citibank,6222 South Kedzie Avenue,commercial
+Esperanza North Building,4700 South California Avenue,commercial
+Esperanza South Building,4720 South California Avenue,commercial
+Extra Space Storage,4222 South Pulaski Road,commercial
+Former CPD Station,3900 South California Avenue,commercial
+Marquette Bank,6155 South Pulaski Road,commercial
+Polish Highlanders Alliance,4800 South Archer Avenue,commercial
+St Mary's Parish Center,4626 West 63rd Street,commercial
+Top View Restaurant,4715 West 63rd Street,commercial
+Winston's Sausages,4701 West 63rd Street,commercial
+Gads Hill Center,4255 South Archer Avenue,community_centre
+Sarah's Candies,,confectionery
+7-Eleven,4001 West 59th Street,convenience
+BP Shop,4710 West 63rd Street,convenience
+BP Shop,4520 South Cicero Avenue,convenience
+Circle K,5500 South Pulaski Road,convenience
+Cup Board Food & Liquors,,convenience
+Hudson,,convenience
+La Bodeguita Beto’s Produce,4233 South Albany Avenue,convenience
+Urban Snack Mart,,convenience
+MAC Cosmetics,,cosmetics
+Ulta Beauty,4146 South Pulaski Road,cosmetics
+Michaels,4070 South Pulaski Road,craft
+Avila Dental,6144 South Pulaski Road,dentist
+Forever Dental,4450 South Archer Avenue,dentist
+Premiere Family Dental- Archer,4554 South Archer Avenue,dentist
+Sonrisa Family Dental,3229 West 47th Place,dentist
+Marshalls,4130 South Pulaski Road,department_store
+Ross,4120 South Pulaski Road,department_store
+TJ Maxx,4932 South Kedzie Avenue,department_store
+Scelebrations,5409 South Kedzie Avenue,dressmaker
+Simple Fix,,electronics_repair
+Elite Staffing,,employment_agency
+Realty of Chicago,,estate_agent
+Midway Catering & Banquet Hall,4222 West 63rd Street,events_venue
+claire's,4114 South Pulaski Road,fashion_accessories
+AD&B America's Dog,,fast_food
+Arami,,fast_food
+Beecher's Handmade,,fast_food
+Big & Little’s,,fast_food
+Billy Goat Tavern,,fast_food
+Chipotle,5330 South Pulaski Road,fast_food
+Domino's,5018 South Pulaski Road,fast_food
+Dunkin',4612 West 59th Street,fast_food
+Dunkin',,fast_food
+Dunkin',4701 South Kedzie Avenue,fast_food
+Einstein Bros. Bagels,5757 South Cicero Avenue,fast_food
+Garrett Popcorn Shops,,fast_food
+Little Caesars,3225 West 47th Place,fast_food
+M Burger,,fast_food
+Mr. Submarine,5012 South Pulaski Road,fast_food
+Nuts on Clark,,fast_food
+Pizza Hut Delivery,4350 South Pulaski Road,fast_food
+Pizza Nova,,fast_food
+Porkchop,,fast_food
+R.J. Grunts Burger And Fries,,fast_food
+Subway,6400 South Cicero Avenue,fast_food
+Subway,6450 South Pulaski Road,fast_food
+Subway,5853 South Kedzie Avenue,fast_food
+Subway,5131 South Pulaski Road,fast_food
+Subway,4735 South Cicero Avenue,fast_food
+Subway,4406 South Pulaski Road,fast_food
+Tallboy Taco,,fast_food
+Wingstop,5859 South Kedzie Avenue,fast_food
+Wingstop,4428 South Pulaski Road,fast_food
+Woodgrain,,fast_food
+Chicago Fire Department Engine Company 34,4034 West 47th Street,fire_station
+Chicago Fire Department Engine Company 65,3000 West 42nd Street,fire_station
+Chicago Fire Department Engine Company 88,3637 West 59th Street,fire_station
+Former Chicago Fire Department E88,3500 West 60th Street,fire_station
+C.J. Vitner Co (Utz Brands),"4202 W 45th St, Chicago, IL 60632",food_manufacturing
+Water Playground,,fountain
+Rent-A-Center,4709 South Kedzie Avenue,furniture
+The Atrium,,gift
+iStore,,gift
+City of Chicago Service Center,4770 South Kedzie Avenue,government
+La Hacienda,,grocery
+Chic Hair Studio,,hairdresser
+Glenna's Hair Salon,3801 West 55th Street,hairdresser
+Made Barber Lounge,5014 South Pulaski Road,hairdresser
+Maria’s Beauty Salon,4109 South Archer Avenue,hairdresser
+Reyna's Salon Unisex,,hairdresser
+CosmoProf,5160 South Pulaski Road,hairdresser_supply
+Sally Beauty,5135 South Pulaski Road,hairdresser_supply
+Sally Beauty,4725 South Kedzie Avenue,hairdresser_supply
+Baskin-Robbins,5931 South Kedzie Avenue,ice_cream
+Baskin-Robbins,4701 South Kedzie Avenue,ice_cream
+De Colores,3838 West 49th Street,ice_cream
+La Michoacana Premium,5160 South Pulaski Road,ice_cream
+Isola Imports,"4525 S Tripp Ave, Chicago, IL 60632",import_warehouse
+Central Steel & Wire Co.,3000-3032 West 51st Street,industrial
+Midway Business Center,,industrial
+Reliable Ogden,3741 South Pulaski Road,industrial
+World's Finest Chocolate,4801 South Lawndale Avenue,industrial
+Sterling Bay Industrial,"4510 W Ann Lurie Pl, Chicago, IL 60632",industrial_property
+K and K Abrasives and Supplies,"5161 S Millard Ave, Chicago, IL 60632",industrial_supply
+Angelica Garcilazo - State Farm Insurance Agent,4326 South Pulaski Road,insurance
+Insurance Navy Brokers,5016 South Pulaski Road,insurance
+Insurance Navy Brokers,4300 S Archer Ave,insurance
+Oxford Auto Insurance,,insurance
+State Farm - Luis Requena,5356 South Archer Avenue,insurance
+Talro Auto Insurance,,insurance
+Sergio V Jewelry,5959 South Pulaski Road,jewelry
+Merry Go Round Nursery School,,kindergarten
+Southwest Cooperative Pre-School,,kindergarten
+Su Nueva Lavanderia,,laundry
+Archer Heights Branch Library,5055 South Archer Avenue,library
+Brighton Park Branch Library,4314 South Archer Avenue,library
+Chicago Lawn Branch Library,6120 South Kedzie Avenue,library
+West Lawn Branch Library,4020 West 63rd Street,library
+Omega Locksmith,4346 West 51st Street,locksmith
+Archer Manufacturing Co,"4439 S Knox Ave, Chicago, IL 60632",manufacturing
+Central Can Company,"4400 W 35th Pl, Chicago, IL 60632",manufacturing
+Chicago American Manufacturing,"4500 W 47th St, Chicago, IL 60632",manufacturing
+Chicago Metal Fabricators,"3724 S Rockwell St, Chicago, IL 60632",manufacturing
+Chicago Metal Rolled Products,"3715 S Rockwell St, Chicago, IL 60632",manufacturing
+Chicago Ornamental Iron,"4340 W 47th St, Chicago, IL 60632",manufacturing
+HPI North America,"4501 W 47th St, Chicago, IL 60632",manufacturing
+Super Mall,5220 South Pulaski Road,marketplace
+AT&T,4110 South Pulaski Road,mobile_phone
+Boost Mobile,6400 South Cicero Avenue,mobile_phone
+Boost Mobile,4007 West 59th Street,mobile_phone
+Boost Mobile,5901 South Kedzie Avenue,mobile_phone
+Boost Mobile,3212 West 63rd Street,mobile_phone
+Boost Mobile,5101 South Cicero Avenue,mobile_phone
+Cricket Wireless,5133 South Cicero Avenue,mobile_phone
+Cricket Wireless,4426 South Pulaski Road,mobile_phone
+Metro by T-Mobile,,mobile_phone
+Metro by T-Mobile,5322 South Pulaski Road,mobile_phone
+Metro by T-Mobile,5220 South Pulaski Road,mobile_phone
+T-Mobile,5521 South Kedzie Avenue,mobile_phone
+T-Mobile,,mobile_phone
+T-Mobile,4612 South Kedzie Avenue,mobile_phone
+Xtreme Mobile,4702 West 63rd Street,mobile_phone
+Western Union,5501 South Pulaski Road,money_transfer
+Unilogic - Midway,5230 South Cicero Avenue,moving_company
+Departure News,,newsagent
+Southside News,,newsagent
+GNC,5155 South Pulaski Road,nutrition_supplements
+AT&T,6249 South Kilbourn Avenue,office
+Visionworks,4313 South Pulaski Road,optician
+15,,other
+22L Pad,,other
+"315, 379, 383, 384 & 385",,other
+31R,,other
+3700 S Kedzie,,other
+3741 S Pulaski,,other
+3742 S Pulaski,,other
+386 & 390,,other
+38th Street & Homan,,other
+47,,other
+47 EB,,other
+47 WB,,other
+47th Street & Albany,,other
+47th Street & Archer,,other
+47th Street & Cicero,,other
+47th Street & Francisco,,other
+47th Street & Hamlin,,other
+47th Street & Homan,,other
+47th Street & Karlov,,other
+47th Street & Kedzie,,other
+47th Street & Keeler,,other
+47th Street & Kilbourn,,other
+47th Street & Kildare,,other
+47th Street & Kilpatrick,,other
+47th Street & Knox,,other
+47th Street & Kolmar,,other
+47th Street & Kostner,,other
+47th Street & Lawndale,,other
+47th Street & Pulaski,,other
+47th Street & Sacramento,,other
+47th Street & Spaulding,,other
+47th Street & Springfield,,other
+47th Street & St. Louis,,other
+5000 S Kedzie,,other
+51,,other
+51st Street & Albany,,other
+51st Street & California,,other
+51st Street & Francisco,,other
+51st Street & Kedzie,,other
+51st Street & Sacramento,,other
+52 NB,,other
+52 SB & 52A,,other
+5200 S Pulaski,,other
+53 NB,,other
+53 SB,,other
+53A,,other
+"54B, 55A, 55N, 62H & N62",,other
+55,,other
+55th Street & Albany,,other
+55th Street & Central Park,,other
+55th Street & Cicero,,other
+55th Street & Francisco,,other
+55th Street & Hamlin,,other
+55th Street & Homan,,other
+55th Street & Karlov,,other
+55th Street & Kedzie,,other
+55th Street & Keeler,,other
+55th Street & Kenneth,,other
+55th Street & Kilbourn,,other
+55th Street & Kildare,,other
+55th Street & Kilpatrick,,other
+55th Street & Kostner,,other
+55th Street & Lawndale,,other
+55th Street & Pulaski,,other
+55th Street & Sacramento,,other
+55th Street & Spaulding,,other
+55th Street & Springfield,,other
+55th Street & St. Louis,,other
+59,,other
+59th Street & Albany,,other
+59th Street & Central Park,,other
+59th Street & Francisco,,other
+59th Street & Hamlin,,other
+59th Street & Homan,,other
+59th Street & Karlov,,other
+59th Street & Kedzie,,other
+59th Street & Keeler,,other
+59th Street & Kilbourn,,other
+59th Street & Kildare,,other
+59th Street & Kostner,,other
+59th Street & Lawndale,,other
+59th Street & Pulaski,,other
+59th Street & Sacramento,,other
+59th Street & Spaulding,,other
+59th Street & Springfield,,other
+59th Street & St. Louis,,other
+59th Street Subdivision,,other
+62,,other
+6220 S Cicero,,other
+63,,other
+63W & 165,,other
+63rd Street & Albany,,other
+63rd Street & Central Park,,other
+63rd Street & Cicero,,other
+63rd Street & Francisco,,other
+63rd Street & Hamlin,,other
+63rd Street & Homan,,other
+63rd Street & Karlov,,other
+63rd Street & Kedzie,,other
+63rd Street & Keeler,,other
+63rd Street & Kilbourn,,other
+63rd Street & Kildare,,other
+63rd Street & Kilpatrick,,other
+63rd Street & Knox,,other
+63rd Street & Kostner,,other
+63rd Street & Lamon,,other
+63rd Street & Lawndale,,other
+63rd Street & Pulaski,,other
+63rd Street & Sacramento,,other
+63rd Street & Spaulding,,other
+63rd Street & Springfield,,other
+63rd Street & St. Louis,,other
+A1,,other
+A10,,other
+A11,,other
+A12,,other
+A14,,other
+A16,,other
+A18,,other
+A19,,other
+A2,,other
+A20,,other
+A3,,other
+A4A,,other
+A4B,,other
+A5,,other
+A7,,other
+A9,,other
+Activa-te fitness & Nutrition,3919 West 63rd Street,other
+Archer & 49th Street/Avers,,other
+Archer & Cicero,,other
+Archer & Cicero (Farside),,other
+Archer & Cicero (Nearside),,other
+Archer & Francisco,,other
+Archer & Hamlin,,other
+Archer & Homan,,other
+Archer & Kedzie,,other
+Archer & Keeler,,other
+Archer & Kilbourn,,other
+Archer & Kildare,,other
+Archer & Kilpatrick,,other
+Archer & Knox,,other
+Archer & Kolmar,,other
+Archer & Kostner,,other
+Archer & Lawndale,,other
+Archer & Pope John Paul II/43rd Street,,other
+Archer & Pulaski,,other
+Archer & Sacramento,,other
+Archer & Spaulding,,other
+Archer & St. Louis,,other
+Archer Heights,,other
+Archer Heights Veterans Monument,,other
+Archer Park,4901 South Kilbourn Avenue,other
+B1,,other
+B10,,other
+B11,,other
+B12,,other
+B14,,other
+B15,,other
+B16,,other
+B18,,other
+B2,,other
+B3,,other
+B5,,other
+B7,,other
+B8,,other
+B9,,other
+BNSF Chillicothe Subdivision,,other
+BNSF Corwith Lead,,other
+BNSF Corwith Yard,,other
+BNSF Hump Lead,,other
+BNSF Nerska Yard,,other
+BNSF Work Lead,,other
+BRC Elsdon Industrial Lead,,other
+Battle Of Midway Memorial,,other
+Blink Fitness,5160 South Pulaski Road,other
+Brick Yard Gym,4051 West 47th Street,other
+Brighton Park,,other
+C1,,other
+C2,,other
+C3,,other
+CFX Fitness,5324 South Pulaski Road,other
+CN,,other
+CTA Midway Yard,,other
+Carlton Inn Midway,4944 South Archer Avenue,other
+Chicago GATX-Allied Oil,,other
+Chicago Lawn,,other
+Chicago Midway International Airport,,other
+Chicago Sanitary and Ship Canal,,other
+Cicero & Archer,,other
+Cicero & Pershing,,other
+Cicero Avenue Railroad Bridge,,other
+Citgo Cicero Refinery,3737 South Ciero Avenue,other
+ComEd Sawyer Substation,3550 West 48th Street,other
+Conrail Lead,,other
+Corwith,,other
+Corwith Intermodal Facility,,other
+Crawford Line #1,,other
+Crawford Line #2,,other
+Crawford Line #3,,other
+Curie Park,4949 South Archer Avenue,other
+E Pad,,other
+E1,,other
+E2,,other
+East Shop Lead,,other
+Elsdon,,other
+Elsdon Industrial Lead,,other
+Elsdon Subdivision,,other
+Eye Can See Now,,other
+Far East Trk,,other
+Flight Forms,,other
+Gage Park,,other
+Garfield Manor,,other
+Garfield Ridge,,other
+Giant Cow,,other
+Glendale,,other
+Goodings Grove - Crawford 345 kV,,other
+Hayford - Sawyer,,other
+Inner Loop,,other
+Inner Loop Connector,,other
+Irma C. Ruiz Park,3801 West 45th Street,other
+Joliet Subdivision,,other
+Karlov & Archer,,other
+Kedzie,,other
+Kedzie,4900 South Kedzie Avenue,other
+Kedzie & 63rd Place Terminal,,other
+Kedzie & Archer,,other
+Kedzie & Pershing,,other
+Kedzie Orange Line Station,,other
+Kenton Line Subdivision,,other
+Kenwood Line,,other
+Kujawa Park,4330 South Kedvale Avenue,other
+Lay-Up,,other
+LeClaire Courts,,other
+LeMoyne,,other
+MIND + HAND,5400 South Pulaski Road,other
+Mahomet #2,,other
+McCook - Crawford 138 kV,,other
+Midway,,other
+Midway,4612 West 59th Street,other
+Midway Arrivals,,other
+Midway Branch,,other
+Midway Departures,,other
+Midway Orange Line Station,,other
+Midway Parking Shuttle,,other
+Mother's Room,,other
+NS RR,,other
+Nerska,,other
+Outer Loop,,other
+Park No. 468,4556 West 56th Street,other
+Park No. 585,6049 South Whipple Street,other
+Park Number 528,6336 South Kilbourn Avenue,other
+Pasteur Park,5825 South Kostner Avenue,other
+Pershing & Albany,,other
+Pershing & California,,other
+Pershing & Francisco,,other
+Pershing & Homan,,other
+Pershing & Kedzie,,other
+Pershing & Sacramento,,other
+Pershing & Spaulding,,other
+Planet Fitness,4327-4331 South Pulaski Road,other
+Pocket Track,,other
+Pulaski,,other
+Pulaski,5106 South Pulaski Road,other
+Pulaski & Archer,,other
+Pulaski Orange Line Station,,other
+Saint Gall Convent,,other
+Senka Park,5400 South Saint Louis Avenue,other
+Siegal Steel,4747 South Kedzie Avenue,other
+Sleepy Hollow,,other
+South Lead,,other
+South Loop,,other
+Space Junction of Energy,,other
+St. Louis & 38th Place,,other
+St. Louis & Pershing,,other
+Staging Track,,other
+Stickney,,other
+Strohacker Park,4347 West 54th Street,other
+Summit,,other
+Test Track,,other
+The Battle,,other
+The Chicago Connection,,other
+The Technology,,other
+"US Army, Navy & Marine Corps Recruiting Station",5160 South Pulaski Road,other
+West Elsdon,,other
+West Pope John Paul II Drive,,other
+West Shop Lead,,other
+X,,other
+Yoga Room,,other
+Bagcraft Packaging (Novolex),"3900 W 43rd St, Chicago, IL 60632",packaging_manufacturing
+Airways Parking,4532 West 55th Street,parking
+Kedzie Kiss & Ride,,parking
+Kedzie Park & Ride,,parking
+Midway Airport Daily Lot,,parking
+Midway Airport Economy Lot,5050 West 55th Street,parking
+Midway Kiss & Ride,,parking
+Midway Park & Ride,,parking
+Midway Park Saver,4607 West 59th Street,parking
+Pulaski Kiss & Ride,,parking
+Pulaski Park & Ride,,parking
+Taxi Staging Area,,parking
+Trailer Parking,,parking
+Casa de Empeno,5160 South Pulaski Road,pawnbroker
+Jo Malone,,perfumery
+PetSmart,4146 South Pulaski Road,pet
+CVS Pharmacy,6315 South Pulaski Road,pharmacy
+Walgreens,4000 West 59th Street,pharmacy
+Walgreens,6315 South Kedzie Avenue,pharmacy
+Walgreens,5414 South Cicero Avenue,pharmacy
+Walgreens,3943 West 47th Street,pharmacy
+Beautiful Saviour Evangelical Lutheran Church,,place_of_worship
+Chapel,,place_of_worship
+Church of the Christ Light,,place_of_worship
+Chicago Police Department,,police
+Former CPD 8th District Station,3515 West 63rd Street,police
+Elsdon Post Office,4922 South Kedzie Avenue,post_office
+CTA Midway Substation,4642 West 58th Street,power_substation
+Archer Park Fieldhouse,4901 South Kilbourn Avenue,public
+Chicago Lawn Post Office,6037 South Kedzie Avenue,public
+Chicago Police Department 8th District,3420 West 63rd Street,public
+Greater Lawn Health Center,4150 West 55th Street,public
+Pasteur Park Fieldhouse,5825 South Kostner Avenue,public
+The Rock Spot Studios,"4500 S Tripp Ave, Chicago, IL 60632",recording_studio
+U-Haul,3206 West 61st Street,rental
+Marian Fathers Monastery,6336 South Kilbourn Avenue,residential
+5 Estrellas Restaurant,2908 West 59th Street,restaurant
+Beggars Pizza,5133 South Cicero Avenue,restaurant
+Big Bowl Chinese & Sushi,,restaurant
+Big City Chicken,,restaurant
+Birrieria Zaragoza,4852 South Pulaski Road,restaurant
+Chuck E. Cheese,5030 South Kedzie Avenue,restaurant
+Cielo Cantina,,restaurant
+Coco Club,3350 West 47th Street,restaurant
+Connie's Pizza,,restaurant
+D'Nuez,4125 South Archer Avenue,restaurant
+El Taconazo,5145 South Pulaski Road,restaurant
+Gene's Bistro,,restaurant
+Hubbard Inn,,restaurant
+Mariscos La Diabla Restaurant,4222 West 63rd Street,restaurant
+Papa T's,2843 West 63rd Street,restaurant
+Reilly's Daughter,,restaurant
+Rosa's Tamales,,restaurant
+Tacos Villa,3139 West 63rd Street,restaurant
+Tamales Rebe,,restaurant
+Taqueria La Hacienda,,restaurant
+White Sox Bar And Grill,,restaurant
+47th & Pulaski Currency Exchange,4700 South Pulaski Road,retail
+55th & Pulaski Currency Exchange,5501 South Pulaski Road,retail
+7-Eleven,4500 West 63rd Street,retail
+7-Eleven,6057 South Kedzie Avenue,retail
+7-Eleven,4353 West 55th Street,retail
+AV Anthony's,4720 West 63rd Street,retail
+Advance Auto Parts,6225 South Pulaski Road,retail
+Advance Auto Parts,4625 South Pulaski Road,retail
+Aldi,4501 South Pulaski Road,retail
+Allstate,5558 South Pulaski Road,retail
+AutoZone,6112 South Pulaski Road,retail
+AutoZone,4536 South Cicero Avenue,retail
+AutoZone,4034 West 51st Street,retail
+AutoZone,4100 South Archer Avenue,retail
+BP,4520 South Cicero Avenue,retail
+BP Shop,5901 South Pulaski Road,retail
+BP Shop,6500 South Kedzie Avenue,retail
+BP Shop,4401 West 55th Street,retail
+BP Shop,4759 South Cicero Avenue,retail
+BP Shop,4540 South Pulaski Road,retail
+BP Shop,4710 South Archer Avenue,retail
+Bank of America,6115 South Pulaski Road,retail
+Burger King,6350 South Cicero Avenue,retail
+Burger King,6448 South Kedzie Avenue,retail
+Burger King,5425 South Pulaski Road,retail
+Burger King,4060 South Pulaski Road,retail
+Byline Bank,4652 South Kedzie Avenue,retail
+Carnitas Don Rafa,4619 South Kedzie Avenue,retail
+Cash America Pawn,4558 South Cicero Avenue,retail
+Cash America Pawn,4812 South Kedzie Avenue,retail
+Chase,4455 South Pulaski Road,retail
+Citgo,4319 West 47th Street,retail
+Clark's Pump-N-Shop,3947-3949 South Kedzie Avenue,retail
+Continental Sales “Lots 4 Less”,6333 South Cicero Avenue,retail
+Cricket Wireless,5953 South Kedzie Avenue,retail
+Dollar General,6225 South Kedzie Avenue,retail
+Dunkin',6435 South Cicero Avenue,retail
+Dunkin',5931 South Kedzie Avenue,retail
+Dunkin',5448 South Pulaski Road,retail
+Dunkin',4649 South Cicero Avenue,retail
+Dunkin',4453 South Archer Avenue,retail
+Dunkin',4113 South Pulaski Road,retail
+Family Dollar,3120 West 63rd Street,retail
+Family Dollar,5018 South Cicero Avenue,retail
+First American Bank,3959 West 45th Street,retail
+Former Bank of America,5269 South Pulaski Road,retail
+Gas N Wash,3800 South Cicero Avenue,retail
+George's,5341 South Archer Avenue,retail
+Giordano's Pizzeria,6314 South Cicero Avenue,retail
+Giordano's Pizzeria,5159 South Pulaski Road,retail
+Goodyear,5301 South Archer Avenue,retail
+KFC,4200 West 55th Street,retail
+Kedzie Plaza South,,retail
+Kedzie Square Shopping Center,,retail
+LA Fitness,5559 South Kedzie Avenue,retail
+La Gloria Supermarket,4117-4125 South Kedzie Avenue,retail
+Leon's BBQ,4550 South Archer Avenue,retail
+Lou Malnati's Pizzeria,6456 South Cicero Avenue,retail
+Lowe's,4640 South Pulaski Road,retail
+Marathon,3000 West 63rd Street,retail
+McDonald's,6430 South Cicero Avenue,retail
+McDonald's,5253 South Pulaski Road,retail
+McDonald's,5733 South Kedzie Avenue,retail
+McDonald's,4704 South Cicero Avenue,retail
+McDonald's,2844 West 47th Street,retail
+Midas,5353 South Archer Avenue,retail
+Midway Square,5107-5151 South Pulaski Road,retail
+Midway Square,5101-5105 South Pulaski Road,retail
+Midway Square,,retail
+Mobil Mart,3658 West 59th Street,retail
+Mobil Mart,3738 South Cicero Avenue,retail
+PLS,4134 South Archer Avenue,retail
+PNC Bank,5075 South Archer Avenue,retail
+Palermo's of 63rd Pizza and Restaurant,3751 West 63rd Street,retail
+Pete's Market,5838 South Pulaski Road,retail
+Pete's Market,5724 South Kedzie Avenue,retail
+Pete's Market,4343 South Pulaski Road,retail
+Phillips 66,3901 West 63rd Street,retail
+Popeyes,5050 South Cicero Avenue,retail
+Popeyes,4431 South Archer Avenue,retail
+Pulaski Promenade,South Pulaski Road,retail
+Pulaski Promenade,,retail
+RE/MAX Mi Casa,5455 South Pulaski Road,retail
+Red Lobster,5201 South Pulaski Road,retail
+Restaurante Cocula,5241 South Pulaski Road,retail
+Rio Valley Market,3307 West 63rd Street,retail
+Save-A-Lot,4439 West 63rd Street,retail
+Self-Help Federal Credit Union,4800 South Pulaski Road,retail
+Shell,5500 South Pulaski Road,retail
+Shell,3952 West 47th Street,retail
+Sparke Center,,retail
+Speed Queen,4312-4314 South Kedzie Avenue,retail
+Starbucks,5210 South Cicero Avenue,retail
+Starbucks,5505 South Kedzie Avenue,retail
+Starbucks,4701 South Cicero Avenue,retail
+Super Mall,,retail
+T-Mobile,4654 South Pulaski Road,retail
+Taco Bell,5350 South Pulaski Road,retail
+Taco Bell,4656 South Cicero Avenue,retail
+Taquería Atotonilco,5656 South Kedzie Avenue,retail
+Target,4433 South Pulaski Road,retail
+The Blue Kanagaroo Laundromat,4550 South Pulaski Road,retail
+Tiger Mart,4951 South Cicero Avenue,retail
+U-Haul,4701-4707 West 47th Street,retail
+U.S. Bank,3525 West 63rd Street,retail
+United Credit Union,4444 South Pulaski Road,retail
+Valvoline,6330 South Cicero Avenue,retail
+Valvoline,6001 South Pulaski Road,retail
+Valvoline,4846 South Archer Avenue,retail
+Villa Rosa Square,,retail
+Walgreens,5414 South Archer Avenue,retail
+Walgreens,5435 South Kedzie Avenue,retail
+Walgreens,4385 South Archer Avenue,retail
+Wendy's,5729 South Kedzie Avenue,retail
+Wendy's,4100 South Pulaski Road,retail
+Western Union,5354 South Archer Avenue,retail
+White Castle,4750 West 63rd Street,retail
+AllStar,5301 South Kedzie Avenue,roof
+BP,5901 South Pulaski Road,roof
+BP,6500 South Kedzie Avenue,roof
+BP,4749 South Cicero Avenue,roof
+BP,4540 South Pulaski Road,roof
+Clark,3951 South Kedzie Avenue,roof
+Exxon,4951 South Cicero Avenue,roof
+Gas Center,3037 West 63rd Street,roof
+Mobil,3644 West 59th Street,roof
+Phillips 66,3905 West 63rd Street,roof
+Acero Major Hector P. García M.D. High School,4248 West 47th Street,school
+Acero Officer Donald J. Marquez Elementary School,2916 West 47th Street,school
+Acero PFC Omar E. Torres Elementary School,4248 West 47th Street,school
+Acero SPC Daniel Zizumbo Elementary School,4248 West 47th Street,school
+Calmeca Academy of Fine Arts and Dual Language,3456 West 38th Street,school
+Columbia Explorers Academy,4520 South Kedzie Avenue,school
+Curie Metropolitan High School,4959 South Archer Avenue,school
+Davis School Annex,3050 West 39th Place,school
+Eberhart Elementary School,3400 West 65th Place,school
+Edwards Elementary School,4815 South Karlov Avenue,school
+Eric Solorio Academy High School,5400 South Saint Louis Avenue,school
+Franciscan Sisters School,,school
+Gunsaulus Scholastic Academy,4420 South Sacramento Avenue,school
+Holy Martyrs School,,school
+Hubbard High School,6200 South Hamlin Avenue,school
+Irene C. Hernandez Middle School,3510 West 55th Street,school
+Jovita Idár Elementary,5050 South Homan Avenue,school
+Kelly High School,4136 South California Avenue,school
+Lee Elementary School,6448 South Tripp Avenue,school
+Magic Mirror Learning Center,,school
+Mansueto High School,2911 West 47th Street,school
+Marquette Elementary School,6550 South Richmond Street,school
+Monarcas Academy,5815 South Homan Avenue,school
+Nathan S. Davis Elementary School,3014 West 39th Place,school
+Nazareth School,,school
+Pasteur Elementary School,5825 South Kostner Avenue,school
+Pathways in Education,3124 West 47th Street,school
+Peck Elementary School,3826 West 58th Street,school
+Richardson Middle School,6018 South Karlov Avenue,school
+Saint Bruno School,,school
+Saint Gall School,,school
+Saint Mary School,,school
+Saint Nicolas School,,school
+Saint Richard School,,school
+Saint Turibius School,,school
+Sawyer Elementary School,5247 South Sawyer Avenue,school
+Socorro Sandoval Elementary School,5534 South Saint Louis Avenue,school
+Sor Juana Elementary School,4034 West 56th Street,school
+Teddy Bear Pre-School #3,,school
+CTA Kedzie Substation,4838 South Kedzie Avenue,service
+CTA Keeler Substation,5159 South Keeler Avenue,service
+Foot Locker,4721 South Kedzie Avenue,shoes
+Shoe Carnival,4150 South Pulaski Road,shoes
+Greater Chicago Food Depository,4100 West Ann Lurie Place,social_facility
+USO,,social_facility
+Public Storage,4220 West 47th Street,storage_rental
+Aldi,4934 South Kedzie Avenue,supermarket
+Cermak Fresh Market,5220 South Pulaski Road,supermarket
+Jewel-Osco,5320 South Pulaski Road,supermarket
+Pete's Market,4700 South Kedzie Avenue,supermarket
+H&R Block,,tax_advisor
+Liberty Tax,5622 South Pulaski Road,tax_advisor
+MD Income Tax & Services,4846 South Pulaski Road,tax_advisor
+Taxes On The Go,5102 South Archer Avenue,tax_advisor
+Tobacco 5 Stars,,tobacco
+FAO Schwartz,,toys
+Midway CTA Station,4612 West 59th Street,train_station
+Pulaski CTA Station,4017-4021 West 51st Street,train_station
+CTA Midway Yard Tower,,transportation
+Archer Premier Tire Shop,4825 South Archer Avenue,tyres
+Dollar Tree,5101 South Cicero Avenue,variety_store
+Dollar Tree,5119 South Pulaski Road,variety_store
+Dollar Tree,4756 South Kedzie Avenue,variety_store
+Dollar Tree,4315 South Archer Avenue,variety_store
+Family Dollar,4936 South Kedzie Avenue,variety_store
+Inspection Pit,,vehicle_inspection
+Ventra,,vending_machine
+GameStop,5835 South Kedzie Avenue,video_games
+GameStop,5143 South Pulaski Road,video_games
+Amazon DIL3,3507 West 51st Street,warehouse
+Altrid Beauty Salon,,yes
+BNSF Yard Tower,,yes
+BP,4710 West 63rd Street,yes
+BP,,yes
+Booting Payment Center,South Kilpatrick Avenue,yes
+CTA Midway Shop,5601 South Kilpatrick Avenue,yes
+Car Inspector Office,,yes
+Citgo,5106-5114 South Pulaski Road,yes
+Citgo,,yes
+Coach House,4424,yes
+Collision Revision,3518 West 63rd Street,yes
+Commercial Vehicle Holding Building,4625 West 55th Place,yes
+Creative Kids,,yes
+Guard Post,,yes
+Heating and Refridgeration Plant,,yes
+Hertz,5259 South Archer Avenue,yes
+La Gloria,5044-5050 South Archer Avenue,yes
+Le Paris Bakery,4450 South Kedzie Avenue,yes
+Los Amantes Banquet Hall,4753 West 47th Street,yes
+Los Pequenos Angelitos Day Care,3711 West 55th Street,yes
+Midway Inn,5335 South Pulaski Road,yes
+Mobil,4629 South Cicero Avenue,yes
+Mobil Mart,4629 South Cicero Avenue,yes
+Muandachareo,,yes
+Regal Beagle,,yes
+Shell,4900-4906 South Cicero Avenue,yes
+Shell,4647 South Pulaski Road,yes
+Skylark Motel,5435 South Archer Avenue,yes
+Strohacker Park Fieldhouse,4347 West 54th Street,yes
+The Apartment Lounge,3806 West 47th Street,yes
