@@ -121,10 +121,13 @@ print("""
 print("""
 ---
 ## 🏗️ DEVELOPMENT PIPELINE
-  Sterling Bay Warehouse ........... 147,500 SF  ████████████████ UNDERWAY
-  Greater Chicago Food Depository .. Expansion   ████████████████ UNDERWAY
-  Moving Archer Forward ........... Corridor     ████████████░░░ ACTIVE
-  Bridge Ind / Ford City Mall ..... 913,000 SF   ████░░░░░░░░░░░ PROPOSED
+  Sterling Bay Warehouse ........... 147,500 SF  ████████████████████ COMPLETE
+  Western Works (Brookfield) ....... 560,000+ SF ████████████░░░░░░░ UNDERWAY
+  Ford City → Kurv Industrial ...... 913,000 SF  ████░░░░░░░░░░░░░░░ PROPOSED
+  Moving Archer Forward ........... Corridor     ██████████████░░░░ ACTIVE
+  CDOT Complete Streets ........... Archer Ave   ████████████████░░ NEAR DONE
+  IBM Quantum Hub S Side .......... 750 Jobs     ██████████░░░░░░░░░ ANNOUNCED
+  GEODIS Cold Chain ................ 78,000 SF   ████████████████████ OPENED
 """)
 
 print("""
@@ -136,13 +139,13 @@ print("""  ★ TOP PICK: DeepSeek-V3 — 88.5 MMLU @ $0.27/M — 9x cheaper than
 
   Model                Input$  Output$  MMLU   Value
   DeepSeek-V3 🇨🇳       0.27    1.10    88.5   ████████████████████
-  DeepSeek-R1 🇨🇳       0.55    2.19    90.8   ████████████████░░
+  DeepSeek-R1 🇨🇳       0.55    2.19    90.8   ████████████████░░░
   Gemini 2.0 Flash 🇺🇸  0.10    0.40    87.5   ██████████████████░
-  GPT-4o-mini 🇺🇸       0.15    0.60    82.0   █████████████░░░░░
-  Llama 3.1 70B 🇺🇸     0.59    0.79    86.0   ██████████████░░░░
-  Qwen2.5-72B 🇨🇳       0.90    0.90    85.0   █████████████░░░░░
+  GPT-4o-mini 🇺🇸       0.15    0.60    82.0   █████████████░░░░░░
+  Llama 3.1 70B 🇺🇸     0.59    0.79    86.0   ██████████████░░░░░
+  Phi-4 14B 🇺🇸         0.15    0.15    84.4   ██████████████░░░░░
   GPT-4o 🇺🇸            2.50   10.00    88.7   ██████████████████░
-  Claude 3.5 Sonnet 🇺🇸 3.00   15.00    88.7   ██████████████████░
+  Claude 3.5 Sonnet 🇺🇸 3.00   15.00    86.0   █████████████████░░
 
   [📈 Full LLM Chart](reports/daily/chart-llm-price-performance.html)
 """)

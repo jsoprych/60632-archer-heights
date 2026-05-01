@@ -230,9 +230,9 @@ llm_data = [
     ("Gemini 2.0 Flash 🇺🇸", 87.5, 0.10, "c-blue"),
     ("GPT-4o-mini 🇺🇸", 82.0, 0.15, "c-green"),
     ("Llama 3.1 70B 🇺🇸", 86.0, 0.59, "c-teal"),
-    ("Qwen2.5-72B 🇨🇳", 85.0, 0.90, "c-purple"),
+    ("Phi-4 14B 🇺🇸", 84.4, 0.15, "c-purple"),
     ("GPT-4o 🇺🇸", 88.7, 2.50, "c-amber"),
-    ("Claude 3.5 Sonnet 🇺🇸", 88.7, 3.00, "c-pink"),
+    ("Claude 3.5 Sonnet 🇺🇸", 86.0, 3.00, "c-pink"),
 ]
 llm_max = max(v for _, v, _, _ in llm_data)
 n5 = len(llm_data)
